@@ -2,40 +2,40 @@
 
 // O que vamos aprender: usar a palavra 'new', uso de classes, métodos e construtores, atributos estáticos e privados, assesores get e set
 
-// Modulo 01 - Aula 03 - Entendendo o problema do cliente
-const cliente1Nome = 'Ricardo'
-const cliente1CPF = 11122233345
-const cliente1Agencia = 1001;
-const cliente1Saldo = 0;
-
-const cliente2Nome = 'Alice'
-const cliente2CPF = 88899933309
-const cliente2Agencia = 1001;
-const cliente2Saldo = 0;
-// Muitas repetições
-// Nossa primeira classe
+// Modulo 02 - Aula 02 - Comportamento de Classes
 class Cliente {
   nome;
   cpf;
+}
+
+class ContaCorrente {
   agencia;
   saldo;
-  RG;
+  sacar(valor) {
+    // 'O saldo, DESSA conta corrente deve ser verificado e subtraido'
+    if (this.saldo >= valor) {
+      this.saldo -= valor;
+    }
+  }
 }
 
 // Instanciando a minha classe
 const cliente1 = new Cliente();
 const cliente2 = new Cliente();
-
 cliente1.nome = 'Ricardo'
 cliente1.cpf = 11122233345
-cliente1.agencia = 1001;
-cliente1.saldo = 0;
-cliente1.RG = 123456789
-
 cliente2.nome = 'Alice'
 cliente2.cpf = 88899933309
-cliente2.agencia = 1001;
-cliente2.saldo = 0;
 
-console.log(cliente1, cliente2)
+const contaCorrenteRicardo = new ContaCorrente()
+contaCorrenteRicardo.agencia = 1001
+contaCorrenteRicardo.saldo = 100
+console.log(contaCorrenteRicardo.saldo)
+contaCorrenteRicardo.sacar(120)
+console.log(contaCorrenteRicardo.saldo)
+
+console.log(cliente1)
+console.log(cliente2)
+
+
 
