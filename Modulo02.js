@@ -2,7 +2,7 @@
 
 // O que vamos aprender: usar a palavra 'new', uso de classes, métodos e construtores, atributos estáticos e privados, assesores get e set
 
-// Modulo 02 - Aula 02 - Comportamento de Classes
+// Modulo 02 - Aula 03 - Adicionando comportamentos
 class Cliente {
   nome;
   cpf;
@@ -10,32 +10,45 @@ class Cliente {
 
 class ContaCorrente {
   agencia;
-  saldo;
+  // Saldo está desprotegido - Sugestção: Private Fields - uso de '#' - nao aceito
+  // #saldo = 0; https://github.com/tc39/proposal-private-fields
+  _saldo = 0;
   sacar(valor) {
     // 'O saldo, DESSA conta corrente deve ser verificado e subtraido'
-    if (this.saldo >= valor) {
-      this.saldo -= valor;
+    if (this._saldo >= valor) {
+      this._saldo -= valor;
+    }
+  }
+  depositar(valor) {
+    if (valor > 0) {
+      this._saldo += valor;
     }
   }
 }
 
-// Instanciando a minha classe
+// Instanciando a minha classe Cliente
 const cliente1 = new Cliente();
 const cliente2 = new Cliente();
 cliente1.nome = 'Ricardo'
 cliente1.cpf = 11122233345
 cliente2.nome = 'Alice'
 cliente2.cpf = 88899933309
-
-const contaCorrenteRicardo = new ContaCorrente()
-contaCorrenteRicardo.agencia = 1001
-contaCorrenteRicardo.saldo = 100
-console.log(contaCorrenteRicardo.saldo)
-contaCorrenteRicardo.sacar(120)
-console.log(contaCorrenteRicardo.saldo)
-
 console.log(cliente1)
 console.log(cliente2)
+
+// Criação da Conta Corrente
+const contaCorrenteRicardo = new ContaCorrente()
+contaCorrenteRicardo.agencia = 1001
+
+contaCorrenteRicardo.depositar(100)
+contaCorrenteRicardo.depositar(100)
+contaCorrenteRicardo.depositar(100)
+contaCorrenteRicardo.sacar(50)
+// contaCorrenteRicardo._saldo = 1000; // Consigo acessar ainda sim
+console.log(contaCorrenteRicardo)
+
+
+
 
 
 
