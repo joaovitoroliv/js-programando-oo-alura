@@ -1,41 +1,31 @@
-// O objetivo agora é criarmos um sistema de conta-corrente e cadastro de clientes para o contratante Bytebank, de modo que seja possível manipular o saldo desses usuários e realizar operações bancárias.
+// ECMAScript 13 - Inserção dos Módulos
+// Uso da palavra import para importar o meu conteudo
+import {Cliente} from './Cliente.js'
+import {ContaCorrente} from './ContaCorrente.js'
+// SyntaxError: Cannot use import statement outside a module
+// Para resolver esse erro: colocar "type": "module" no package.json -> npm init -y
 
-// O que vamos aprender: usar a palavra 'new', uso de classes, métodos e construtores, atributos estáticos e privados, assesores get e set
-
-// Modulo 01 - Aula 03 - Entendendo o problema do cliente
-const cliente1Nome = 'Ricardo'
-const cliente1CPF = 11122233345
-const cliente1Agencia = 1001;
-const cliente1Saldo = 0;
-
-const cliente2Nome = 'Alice'
-const cliente2CPF = 88899933309
-const cliente2Agencia = 1001;
-const cliente2Saldo = 0;
-// Muitas repetições
-// Nossa primeira classe
-class Cliente {
-  nome;
-  cpf;
-  agencia;
-  saldo;
-  RG;
-}
-
-// Instanciando a minha classe
 const cliente1 = new Cliente();
 const cliente2 = new Cliente();
 
 cliente1.nome = 'Ricardo'
 cliente1.cpf = 11122233345
-cliente1.agencia = 1001;
-cliente1.saldo = 0;
-cliente1.RG = 123456789
-
 cliente2.nome = 'Alice'
 cliente2.cpf = 88899933309
-cliente2.agencia = 1001;
-cliente2.saldo = 0;
+// console.log(cliente1)
+// console.log(cliente2)
 
-console.log(cliente1, cliente2)
+// Transferëncia entre contas
+const contaCorrenteRicardo = new ContaCorrente()
+contaCorrenteRicardo.agencia = 1001
+contaCorrenteRicardo.cliente = cliente1;
+contaCorrenteRicardo.depositar(500);
+console.log(contaCorrenteRicardo)
 
+const contaCorrenteAlice = new ContaCorrente();
+contaCorrenteAlice.cliente = cliente2; 
+contaCorrenteAlice.agencia = 102;
+console.log(contaCorrenteAlice)
+contaCorrenteRicardo.transferir(200, contaCorrenteAlice)
+console.log(contaCorrenteAlice)
+console.log(contaCorrenteRicardo)
