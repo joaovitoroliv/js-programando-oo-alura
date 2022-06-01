@@ -1,10 +1,33 @@
-// Modulo 03 - Aula 02 - Módulos JavaScript - Separação das classes por arquivo
-// Uso da palavra export para exportar o meu conteudo
+import { Cliente } from "./Cliente.js"
 export class ContaCorrente {
   agencia;
-  cliente;
 
+  // Atributo privados
+  _cliente;
   _saldo = 0;
+
+  // Quero privar o meu atributo 'cliente'
+  // atribuirCliente(){ 
+  // }
+  // pegarCliente(){
+  // }
+  // Para isso uso as palavras reservadas 'get' e o 'set'
+  // Acessor set
+  set cliente(novoValor) {
+    // Quero verificar se o valor de cliente é uma instancia de 'Cliente'
+    if (novoValor instanceof Cliente) {
+      this._cliente = novoValor;
+    }
+  }
+
+  // Acessor get
+    get cliente() {
+      return this._cliente;
+    }
+
+  get saldo(){
+    return this._saldo
+  }
 
   sacar(valor) {
     if (this._saldo >= valor) {
@@ -16,15 +39,9 @@ export class ContaCorrente {
     if (valor <= 0) return;
     this._saldo += valor;
   }
-
-  // Transferëncia entre contas
   transferir(valor, conta) {
-    // Problema
-    // conta.saldo = "Sao Paulo"
-    // parametro valor é uma cópia, contaCorrenteAlice é um objeto, passado por referencia
     const valorSacado = this.sacar(valor);
     conta.depositar(valorSacado);
-    // "Se fizer qualquer alteração em um objeto que eu to recebendo dentro de um parametro, estou alterando o objeto original."
     conta.cidade = "Sao Paulo"
     valor = 20;
   }
