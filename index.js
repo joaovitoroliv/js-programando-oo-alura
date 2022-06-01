@@ -10,8 +10,9 @@ const cliente2 = new Cliente();
 
 cliente1.nome = 'Ricardo'
 cliente1.cpf = 11122233345
-cliente2.nome = 'Alice'
-cliente2.cpf = 88899933309
+// cliente2.nome = 'Alice'
+// cliente2.cpf = 88899933309
+
 // console.log(cliente1)
 // console.log(cliente2)
 
@@ -23,9 +24,16 @@ contaCorrenteRicardo.depositar(500);
 console.log(contaCorrenteRicardo)
 
 const contaCorrenteAlice = new ContaCorrente();
-contaCorrenteAlice.cliente = cliente2; 
+contaCorrenteAlice.cliente = new Cliente(); 
+contaCorrenteAlice.cliente.nome = "Alice";
+contaCorrenteAlice.cliente.cpf = 88899933309;
 contaCorrenteAlice.agencia = 102;
+
 console.log(contaCorrenteAlice)
-contaCorrenteRicardo.transferir(200, contaCorrenteAlice)
-console.log(contaCorrenteAlice)
-console.log(contaCorrenteRicardo)
+
+let valor = 200;
+contaCorrenteRicardo.transferir(valor, contaCorrenteAlice)
+console.log("valor: ",valor)
+
+// console.log(contaCorrenteAlice)
+// console.log(contaCorrenteRicardo)

@@ -19,7 +19,13 @@ export class ContaCorrente {
 
   // Transferëncia entre contas
   transferir(valor, conta) {
+    // Problema
+    // conta.saldo = "Sao Paulo"
+    // parametro valor é uma cópia, contaCorrenteAlice é um objeto, passado por referencia
     const valorSacado = this.sacar(valor);
     conta.depositar(valorSacado);
+    // "Se fizer qualquer alteração em um objeto que eu to recebendo dentro de um parametro, estou alterando o objeto original."
+    conta.cidade = "Sao Paulo"
+    valor = 20;
   }
 }
