@@ -1,5 +1,7 @@
 import { Cliente } from "./Cliente.js"
 export class ContaCorrente {
+  // Atributo estático que será igual para todas as contasCorrente
+  static numeroDeContas = 0;
   agencia;
 
   // Atributo privados
@@ -9,6 +11,7 @@ export class ContaCorrente {
   constructor(agencia, cliente){
     this.agencia = agencia;
     this.cliente = cliente;
+    ContaCorrente.numeroDeContas += 1;
   }
 
   set cliente(novoValor) {
@@ -43,7 +46,5 @@ export class ContaCorrente {
   transferir(valor, conta) {
     const valorSacado = this.sacar(valor);
     conta.depositar(valorSacado);
-    conta.cidade = "Sao Paulo"
-    valor = 20;
   }
 }
