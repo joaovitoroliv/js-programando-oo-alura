@@ -6,28 +6,29 @@ export class ContaCorrente {
   _cliente;
   _saldo = 0;
 
-  // Quero privar o meu atributo 'cliente'
-  // atribuirCliente(){ 
-  // }
-  // pegarCliente(){
-  // }
-  // Para isso uso as palavras reservadas 'get' e o 'set'
-  // Acessor set
+  constructor(agencia, cliente){
+    this.agencia = agencia;
+    this.cliente = cliente;
+  }
+
   set cliente(novoValor) {
     // Quero verificar se o valor de cliente é uma instancia de 'Cliente'
     if (novoValor instanceof Cliente) {
       this._cliente = novoValor;
     }
   }
+  
+  get cliente() {
+    return this._cliente;
+  }
 
-  // Acessor get
-    get cliente() {
-      return this._cliente;
-    }
-
-  get saldo(){
+  get saldo() {
     return this._saldo
   }
+
+
+
+  
 
   sacar(valor) {
     if (this._saldo >= valor) {
