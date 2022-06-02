@@ -1,15 +1,17 @@
 import {Cliente} from './Cliente.js'
 import {ContaCorrente} from './ContaCorrente.js'
 
-// Uso do constructor para criação de Clientes e ContaCorrente (inicialização de atributos)
 const cliente1 = new Cliente("Ricardo", 11122233345);
 const cliente2 = new Cliente('Alice', 88899933309);
 
 const contaCorrenteRicardo = new ContaCorrente(1001, cliente1);
 contaCorrenteRicardo.depositar(500);
 const contaCorrenteAlice = new ContaCorrente(101, cliente2);
-let valor = 200;
-contaCorrenteRicardo.transferir(valor, contaCorrenteAlice)
+contaCorrenteRicardo.transferir(200, contaCorrenteAlice)
 
 // Contabilizar o numero de contasCorrentes com atributo estático
-console.log(ContaCorrente.numeroDeContas)
+// console.log(ContaCorrente.numeroDeContas)
+console.log(contaCorrenteAlice)
+console.log(contaCorrenteRicardo)
+console.log(`Numero de Contas Corrente Ativas no Banco ByteBank: ${ContaCorrente.numeroDeContas}`)
+
